@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid'
+
 import ContactForm from './components/ContactForm';
 import Filter from './components/Filter';
 import ContactList from './components/ContactList';
@@ -15,18 +17,47 @@ class App extends Component {
     filter: '',
   }
   
-  onSubmitForm = (data) => {
-    this.setState({contacts: data})
+  onSubmitForm = ({ name, number }) => {
+    
+  const { contacts } = this.state;
+  
+  const searchContact = contacts.some(contact => {
+  return  contact.name.toLowerCase().includes(name.toLowerCase())
+  })
+
+  if(searchContact){
+    alert(`${name} is alredy in contacts!!!`)
+    return
+  }
+
+  this.setState(({ contacts }) => {
+    return {
+      contacts: [
+        ...contacts,
+        {
+          id: nanoid(4),
+          name: name,
+          number: number,
+        },
+      ],
+    };
+  });
   }
 
   handleChange = event => {
     const filterInputValue = event.currentTarget.value;
     const trimedFilterInputValue = filterInputValue.trim();
     
-
     this.setState({filter: trimedFilterInputValue});
-    }
+  }
 
+  onDeleteContacts = (name) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.name !== name
+      )
+    }))
+    console.log(this.state);
+  }
   
   render() { 
     const { contacts, filter } = this.state;
@@ -42,7 +73,7 @@ class App extends Component {
           
           <Filter onChange={this.handleChange}/>
           
-          <ContactList contacts={contacts} filter={filter}/>
+          <ContactList contacts={contacts} filter={filter} onDeleteContacts={this.onDeleteContacts}/>
       </div>
     );
   }
