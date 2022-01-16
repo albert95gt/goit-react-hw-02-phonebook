@@ -1,13 +1,14 @@
 import React from 'react'
 import ContactItem from './ContactItem'
 import PropTypes from 'prop-types';
+import { ContactListCss } from './ContactList.styled';
 
 
 const ContactList = ({ contacts, filter, onDeleteContacts }) => {
     return (
-        <ul>
+        <ContactListCss>
             <ContactItem contacts={contacts} filter={filter} onDeleteContacts={onDeleteContacts}/>
-        </ul>
+        </ContactListCss>
     )
 }
 

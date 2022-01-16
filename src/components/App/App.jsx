@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid'
 
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
+
+import { Wrapper, PageTitle, ContactsTitle } from './App.styled';
 
 const initialValues = [
   {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -56,25 +58,25 @@ class App extends Component {
       contacts: prevState.contacts.filter(contact => contact.name !== name
       )
     }))
-    console.log(this.state);
+    
   }
   
   render() { 
     const { contacts, filter } = this.state;
     
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Wrapper>
+        <PageTitle>Phonebook</PageTitle>
 
           <ContactForm contacts={contacts}
             onSubmit={this.onSubmitForm}
           />
-          <h2>Contacts</h2>
+          <ContactsTitle>Contacts</ContactsTitle>
           
           <Filter onChange={this.handleChange}/>
           
           <ContactList contacts={contacts} filter={filter} onDeleteContacts={this.onDeleteContacts}/>
-      </div>
+      </Wrapper>
     );
   }
 }
