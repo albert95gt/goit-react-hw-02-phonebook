@@ -14,14 +14,3 @@ export const ContactItemCss = styled.li`
     }
 `;
 
-export const DeleteContactBtn = styled.button`
-    margin-left: 10px;
-    border: none;
-    padding: 5px;
-    font-family: cursive;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    background: #3f87a6;
-    cursor: pointer;
-`;

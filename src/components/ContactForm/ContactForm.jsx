@@ -5,6 +5,9 @@ import { MdPersonAddAlt1 } from  'react-icons/md'
 import { Form, Label, Input, SubmitBtn } from './ContactForm.styled';
 
 class ContactForm extends Component {
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    }
     state = {
         name: '',
         number: '',
@@ -59,8 +62,6 @@ class ContactForm extends Component {
     }
 }
 
-ContactForm.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-}
- 
 export default ContactForm;
+
+ 
