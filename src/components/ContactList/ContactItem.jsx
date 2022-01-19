@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { ContactItemCss } from './ContactItem.styled';
+import { ContactItemCss, ItemDescr } from './ContactItem.styled';
 
 const ContactItem = ({ name, number, children}) => {
     
@@ -8,20 +8,16 @@ const ContactItem = ({ name, number, children}) => {
             return (
             
             <ContactItemCss>
-              <span>{name}:</span>
+              <ItemDescr>{name}:</ItemDescr>
               <span>{number}</span>
               {children}
             </ContactItemCss>
           )}
     
-// ContactItem.propTypes = {
-//   contacts: PropTypes.arrayOf(PropTypes.shape({
-//     id: PropTypes.string.isRequired,
-//     name: PropTypes.string.isRequired,
-//     number: PropTypes.string.isRequired
-//   }).isRequired),
-//   filter: PropTypes.string.isRequired,
-//   onDeleteContacts: PropTypes.func.isRequired,
-// }
+ContactItem.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  children: PropTypes.object.isRequired,
+}
 
 export default ContactItem;

@@ -14,3 +14,7 @@ export const ContactItemCss = styled.li`
     }
 `;
 
+export const ItemDescr = styled.span`
+    margin-right: 10px;
+`
+
